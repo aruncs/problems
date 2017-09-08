@@ -36,4 +36,62 @@ public class BinarySearchTree{
 	public Node getRoot(){
 		return this.root;
 	}
+
+	public boolean deleteNode(int value){
+		Node node = this.root;
+		Node previousNode = null;
+		boolean found = false;
+		boolean isLeft = false;
+		while(node != null){
+			previousNode = node;
+			if(node.value == value){
+				found = true;
+				break;
+			}else if(value <= node.value){
+				node = node.left;
+				isLeft = true;
+			}else{
+				node = node.right;
+				isLeft = false;
+			}
+		}
+		if(found){
+			//Deleting the root node
+			if(previousNode == node){
+				if(node.right != null){
+					Node temp = node.right;
+					while(temp.left != null){
+						temp = temp.left;
+					}
+					temp.left = node.left;
+				}else{
+					this.root = node.left;
+				}
+			}else{
+			//Delete any other node.
+				//There exists a Right subtree for the node to be deleted.
+				Node leftSubtree = node.left;
+				Node rightSubtree = node.right;
+				if(rightSubtree != null){
+					while(rightSubtree.left != null){
+						rightSubtree = rightSubtree.left;
+					}
+					rightSubtree.left = leftSubtree;
+					if(isLeft){
+						previousNode.left = rightSubtree;
+					}else{
+						previousNode.right = rightSubtree;
+					}
+				}else{
+					if(isLeft){
+						previousNode.left = leftSubtree;
+					}else{
+						previousNode.right = leftSubtree;
+					}
+				}
+			}
+			return true;
+		}
+		return false;
+	}
 }
