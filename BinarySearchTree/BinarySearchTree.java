@@ -104,4 +104,24 @@ public class BinarySearchTree{
 			traverseInOrder(root.right);
 		}
 	}
+
+	public void traversePreOrder(Node root){
+		System.out.println(root.value);
+		if(root.left != null){
+			traverseInOrder(root.left);
+		}
+		if(root.right != null){
+			traverseInOrder(root.right);
+		}
+	}
+
+	public void traversePostOrder(Node root){
+		if(root.left != null){
+			traverseInOrder(root.left);
+		}
+		if(root.right != null){
+			traverseInOrder(root.right);
+		}
+		System.out.println(root.value);
+	}
 }

@@ -18,6 +18,10 @@ public class BinarySearchTreeRunner{
 
 		System.out.println("In Order Traversal :");
 		tree.traverseInOrder(tree.getRoot());
+		System.out.println("Pre Order Traversal :");
+		tree.traversePreOrder(tree.getRoot());
+		System.out.println("Post Order Traversal :");
+		tree.traversePostOrder(tree.getRoot());
 		System.out.println("Root Node " + tree.getRoot());
 	}
 }
