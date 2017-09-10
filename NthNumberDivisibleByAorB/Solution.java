@@ -19,13 +19,7 @@ public class Solution{
     long lastNumber = min;
     long number = min;
     while(count < n){
-      if(number % a == 0){
-        count++;
-        lastNumber = number;
-      }else if(number % b == 0){
-        count++;
-        lastNumber = number;
-      }else if(number % product == 0){
+      if(number % a == 0 || number % b == 0){
         count++;
         lastNumber = number;
       }
